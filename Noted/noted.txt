@@ -1,0 +1,21 @@
+tutorial:
+
+1. Mekanik game -> How to make Pong in Unity - Zigurous (https://www.youtube.com/watch?v=AcpaYq0ihaM)
+2. 
+
+
+contoh-GDD:
+https://docs.google.com/document/d/1zrXxCq9FCbr9p1KUKjnDAbEEbEnW7hXNq66B28sS86U/edit#heading=h.1s1dfwgzecqh
+upload: https://drive.google.com/drive/folders/1C1Jn5R-DqH-gHodxOgeQFLhR6R2waCek?usp=sharing
+
+
+Project gitkraken:
+
+1. Backlog (GDD)
+2. To-do
+3. In Progress
+4. Review
+
+
+Git-Bash Pre-fix:
+-Add -delete -update -create -fix
