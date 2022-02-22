@@ -1,7 +1,7 @@
 tutorial:
 
 1. Mekanik game -> How to make Pong in Unity - Zigurous (https://www.youtube.com/watch?v=AcpaYq0ihaM)
-2. 
+2. load scene -> Unity Tutorial - How to do multiple Scenes (https://www.youtube.com/watch?v=R_ipogbSv5s)
 
 
 contoh-GDD:
