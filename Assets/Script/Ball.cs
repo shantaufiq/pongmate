@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public GameObject bola;
     public float speed = 200f;
     private Rigidbody2D _rigidbody;
     private void Awake() {
@@ -26,6 +27,10 @@ public class Ball : MonoBehaviour
     
     public void AddForce(Vector2 force){
         _rigidbody.AddForce(force);
+    }
+
+    public void PergerakanBola(bool iyaTidak){
+        bola.SetActive(iyaTidak);
     }
 
 }

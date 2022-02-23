@@ -575,7 +575,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1422861589}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ComputerScores
+        m_MethodName: Player2Scores
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -712,7 +712,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1422861589}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PlayerScores
+        m_MethodName: Player1Scores
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -882,8 +882,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.6
-  m_LinearDrag: 2
+  m_Mass: 0.5
+  m_LinearDrag: 3
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -968,7 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12dbe4d0d2473d448230f04e0a1bc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
   WS_Control: 0
   UpDown_Control: 1
 --- !u!114 &478517107
@@ -1470,7 +1470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 654100007}
   player1Paddle: {fileID: 892768511}
-  player2Paddle: {fileID: 0}
+  player2Paddle: {fileID: 478517106}
   playerScore: {fileID: 1498563577}
   computerScore: {fileID: 221105008}
 --- !u!4 &1422861590

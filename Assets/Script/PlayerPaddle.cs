@@ -40,4 +40,6 @@ public class PlayerPaddle : Paddle
             rigidbody.AddForce(_direction * this.speed);
         }
     }
+
+
 }
