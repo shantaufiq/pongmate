@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Paddle : MonoBehaviour
 {
-        public GameObject player;
+        public GameObject player; // ngambil object player
     public float speed = 10.0f;
     // protected Rigidbody2D _rigidbody;
     public new Rigidbody2D rigidbody { get; private set; }

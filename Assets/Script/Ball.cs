@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public GameObject bola;
+    public GameObject bola; // ngambil object bola
     public float speed = 200f;
     private Rigidbody2D _rigidbody;
     private void Awake() {

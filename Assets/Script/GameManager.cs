@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     // //! input data
-    public GameObject tampilkan;
+    public GameObject tampilkan; //pop-up kemenangnan
     public Ball ball;
     public Paddle player1Paddle;
     public Paddle player2Paddle;
@@ -49,4 +49,5 @@ public class GameManager : MonoBehaviour
             this.player2Paddle.PergerakanPlayer(true);
         }
     }
+
 }

@@ -17,5 +17,13 @@ Project gitkraken:
 4. Review
 
 
+buat menyimpan riwayat pertandingan: playerpref
+
+
 Git-Bash Pre-fix:
 -Add -delete -update -create -fix
+
+referensi 
+pong space: https://space-ping-pong.en.softonic.com/
+angry birds: https://id.techinasia.com/review-angry-birds-action
+
