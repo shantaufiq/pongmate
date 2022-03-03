@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class CanvasTransisi : MonoBehaviour // transisi pindah scene
 {
-    public string NamaScene; // nama scene yang mau dituju
+    private string NamaScene; // nama scene yang mau dituju
 
-    public void btnPindah(string nama = "Multiplayer") {
+    public void btnPindah(string nama) {
         this.gameObject.SetActive(true);
         NamaScene = nama;
         GetComponent<Animator>().Play("end");
