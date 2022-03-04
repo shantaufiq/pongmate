@@ -17,7 +17,9 @@ Project gitkraken:
 4. Review
 
 
-buat menyimpan riwayat pertandingan: playerpref
+buat menyimpan riwayat pertandingan: playerpref, 
+**delay buat bola: coroutine
+
 
 
 Git-Bash Pre-fix:

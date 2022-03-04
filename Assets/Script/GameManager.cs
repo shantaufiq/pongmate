@@ -4,9 +4,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // //! input data
+    //! input data
     public GameObject tampilkan; //pop-up kemenangnan
     public Ball ball;
+    public Ultimate ItemUltimate;
     public Paddle player1Paddle;
     public Paddle player2Paddle;
     public Text player1Score;
@@ -41,12 +42,14 @@ public class GameManager : MonoBehaviour
             this.ball.PergerakanBola(false);
             this.player1Paddle.PergerakanPlayer(false);
             this.player2Paddle.PergerakanPlayer(false);
-        this.tampilScore.text = this.player1Score.text +" - "+ this.player2Score.text;
+            this.tampilScore.text = this.player1Score.text +" - "+ this.player2Score.text;
+            this.ItemUltimate.StopUltimate(false);
         }else{
             tampilkan.SetActive(false);
             this.ball.PergerakanBola(true);
             this.player1Paddle.PergerakanPlayer(true);
             this.player2Paddle.PergerakanPlayer(true);
+            this.ItemUltimate.StopUltimate(true);
         }
     }
 
