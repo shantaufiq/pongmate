@@ -26,10 +26,6 @@ public class Ultimate : MonoBehaviour
         // instance = this;
     }
 
-    private void Start() {
-        ResetPosition();
-    }
-
     private void Update() {
         TampilkanUltimate();
         // Debug.Log(kecepatanTurun);
@@ -113,6 +109,7 @@ public class Ultimate : MonoBehaviour
         }
     }
 
+    //! fungsi corountine untuk lifetime ultimate 
     IEnumerator ResetSpeed1(){
         yield return new WaitForSecondsRealtime(5f);
         player1.ResetSpeedP1();
@@ -133,4 +130,5 @@ public class Ultimate : MonoBehaviour
         player2.ResetBounceP2();
         PlayerGetUlti = resetGetUlti;
     }
+    //! fungsi corountine untuk lifetime ultimate 
 }

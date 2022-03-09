@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     //! input data
+    public GameObject popUpStart;
     public GameObject tampilkan; // pop-up kemenangnan
     public Ball ball;
     public Ultimate ItemUltimate;
@@ -22,9 +23,11 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         instance = this;
     }
+    private void Start() {
+        StartStopGame(false);    
+    }
     void Update(){ 
         CheckKemenangan();
-        // KeluarinUltimate();
     }
     public void Player1Scores(){ //! menangkap parameter dari scoring zone
         _player1Score++; // menambahkan score player 1
@@ -36,7 +39,7 @@ public class GameManager : MonoBehaviour
         this.player2Score.text = _player2Score.ToString();
         ResetRound();
     }
-    private void ResetRound(){ //! fungsi untuk mengembalikan posisi player dan ball ke awal
+    public void ResetRound(){ //! fungsi untuk mengembalikan posisi player dan ball ke awal
         this.ItemUltimate.ResetPosition();
         this.player1Paddle.ResetPosition();
         this.player2Paddle.ResetPosition();
@@ -44,7 +47,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ReturnBall());
     }
 
-    IEnumerator ReturnBall(){
+    IEnumerator ReturnBall(){ //! corountine untuk ngehold bola ketika habis poin
         yield return new WaitForSecondsRealtime(1.2f);
         this.ball.AddStartingForce();
     }
@@ -52,20 +55,24 @@ public class GameManager : MonoBehaviour
         if (_player1Score == 10 || _player2Score == 10)
         {
             tampilkan.SetActive(true);
-            this.ball.PergerakanBola(false);
+            this.ball.StartStopBall(false);
             this.player1Paddle.PergerakanPlayer(false);
             this.player2Paddle.PergerakanPlayer(false);
             this.tampilScore.text = this.player1Score.text +" - "+ this.player2Score.text;
             this.ItemUltimate.StopUltimate(false);
         }else{
             tampilkan.SetActive(false);
-            this.ball.PergerakanBola(true);
             this.player1Paddle.PergerakanPlayer(true);
             this.player2Paddle.PergerakanPlayer(true);
-            this.ItemUltimate.StopUltimate(true);
         }
     }
-    public void CheckStatusBola(bool isi){ //! checker ketika bola nyentuh paddle 
+    public void StartStopGame(bool kondisi){
+        popUpStart.SetActive(!kondisi);
+        this.player1Paddle.PergerakanPlayer(kondisi);
+        this.player2Paddle.PergerakanPlayer(kondisi);
+        this.ItemUltimate.StopUltimate(kondisi);
+    }
+    public void CheckStatusBola(bool isi){ //! checker ketika bola nyentuh paddle - menangkap parameter boolean dari paddle
         BallStatus = isi;
     }
     public void KirimItemID(int index){ //! function untuk ngambil index item ultimate dari class Ultimate.cs

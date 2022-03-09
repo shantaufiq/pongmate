@@ -8,11 +8,16 @@ public class Ball : MonoBehaviour
     private void Awake() {
         _rigidbody = GetComponent<Rigidbody2D>();
     }
-    private void Start() {
-        ResetPosition();
-        AddStartingForce();
+
+    public void StartStopBall(bool kondisi){
+        if (kondisi == true){
+            ResetPosition();
+            AddStartingForce();
+        }else{
+            bola.SetActive(false);
+        }
     }
-    public void ResetPosition(){
+    public void ResetPosition(){ // mengembalikan bola ke tengah
         _rigidbody.position = Vector2.zero;
         _rigidbody.velocity = Vector2.zero;
     }
@@ -27,10 +32,6 @@ public class Ball : MonoBehaviour
     
     public void AddForce(Vector2 force){
         _rigidbody.AddForce(force);
-    }
-
-    public void PergerakanBola(bool iyaTidak){ //! fungsi untuk mematikan bola, dieksekusi dalam GameManager
-        bola.SetActive(iyaTidak);
     }
 
 }

@@ -11,13 +11,11 @@ public class Paddle : MonoBehaviour
 
     public new Rigidbody2D rigidbody { get; private set; }
 
-    // public bool WS_Control;
-    // public bool UpDown_Control;
-    public EventTrigger.TriggerEvent ultimateTrigger; // ngambil trigger
+    public EventTrigger.TriggerEvent ultimateTrigger; //? membuat trigger - fungsi dieksekusi di GameManager 
 
 
     private void Awake() {
-        rigidbody = GetComponent<Rigidbody2D>(); // mengambil rigidbody dari paddle
+        rigidbody = GetComponent<Rigidbody2D>(); //? mengambil rigidbody dari paddle
         instance = this;
     }
     public void ResetPosition(){ //! fungsi untuk mengembalikan ke posisi awal
@@ -30,18 +28,17 @@ public class Paddle : MonoBehaviour
 
         if (ball != null){ // check apabila bola menyentuh paddle  
             BaseEventData eventData = new BaseEventData(EventSystem.current);
-            this.ultimateTrigger.Invoke(eventData); // memanggil function
+            this.ultimateTrigger.Invoke(eventData); //? memanggil function
         }
 
-        if (ball != null){
+        if (ball != null){ 
             Vector2 normal = collision.GetContact(0).normal;
-            ball.AddForce(-normal * this.bounceStrength);
+            ball.AddForce(-normal * this.bounceStrength); //? menambah kekuatan pukulan
         }
     }
 
     public void PergerakanPlayer(bool iyaTidak){ //! fungsi untuk memberhentikan pergerakan player dieksekusi di GameManager.cs
         player.SetActive(iyaTidak);
     }
-
 
 }
