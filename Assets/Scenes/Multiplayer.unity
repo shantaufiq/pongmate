@@ -1148,8 +1148,7 @@ GameObject:
   - component: {fileID: 478517104}
   - component: {fileID: 478517103}
   - component: {fileID: 478517102}
-  - component: {fileID: 478517106}
-  - component: {fileID: 478517107}
+  - component: {fileID: 478517108}
   m_Layer: 0
   m_Name: Player2Paddle
   m_TagString: Untagged
@@ -1170,7 +1169,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.000001430511, y: 0.0000002384186}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1196,7 +1195,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.5
-  m_LinearDrag: 3
+  m_LinearDrag: 2
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1271,7 +1270,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &478517106
+--- !u!114 &478517108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1280,26 +1279,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 478517101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c12dbe4d0d2473d448230f04e0a1bc98, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c9df08e8f6065f49ba2f73fa0103099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 478517101}
-  speed: 15
-  WS_Control: 0
-  UpDown_Control: 1
---- !u!114 &478517107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478517101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcfe5dc7d1345bb44af701d316d28694, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounceStrength: 20
+  speed: 13
+  bounceStrength: 2
+  ultimateTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1422861589}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CheckStatusBola
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,7 +1493,7 @@ GameObject:
   - component: {fileID: 654100007}
   m_Layer: 0
   m_Name: ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1949,8 +1949,7 @@ GameObject:
   - component: {fileID: 892768509}
   - component: {fileID: 892768508}
   - component: {fileID: 892768507}
-  - component: {fileID: 892768511}
-  - component: {fileID: 892768512}
+  - component: {fileID: 892768513}
   m_Layer: 0
   m_Name: Player1Paddle
   m_TagString: Untagged
@@ -1997,7 +1996,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.5
-  m_LinearDrag: 3
+  m_LinearDrag: 2
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -2072,7 +2071,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &892768511
+--- !u!114 &892768513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2081,26 +2080,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 892768506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c12dbe4d0d2473d448230f04e0a1bc98, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dda3f5d7b7181b4784aae3e2d9d1e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 892768506}
-  speed: 15
-  WS_Control: 1
-  UpDown_Control: 1
---- !u!114 &892768512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 892768506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcfe5dc7d1345bb44af701d316d28694, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounceStrength: 20
+  speed: 13
+  bounceStrength: 2
+  ultimateTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1422861589}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CheckStatusBola
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &993575079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,6 +2656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1248346236}
   - component: {fileID: 1248346237}
+  - component: {fileID: 1248346238}
   - component: {fileID: 1248346235}
   m_Layer: 0
   m_Name: MotherUltimate
@@ -2679,11 +2680,16 @@ MonoBehaviour:
   kecepatanTurun: -5
   MotherUltimate: {fileID: 1248346234}
   IDUltimate: 0
+  player1: {fileID: 892768513}
+  player2: {fileID: 478517108}
   BankUltimate:
   - {fileID: 848512032966238240, guid: 2abac77fbb94226488606c30325c3593, type: 3}
   - {fileID: 1963873540879188119, guid: 8c79bc2ce267a2745b8dd5b72694cd3d, type: 3}
   - {fileID: 2539044821379696208, guid: 838dd0c730c994c4d8daa2fceb6303c3, type: 3}
   - {fileID: 8324380668819200813, guid: a935eac4a0f6c6e4ba69fc837d9de358, type: 3}
+  ultimateManager:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1248346236
 Transform:
   m_ObjectHideFlags: 0
@@ -2692,7 +2698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248346234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.22, z: 0.053877488}
+  m_LocalPosition: {x: 0, y: 13.73, z: 0.053877488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2721,6 +2727,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &1248346238
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248346234}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 7.83}
+  m_EdgeRadius: 0
 --- !u!1 &1265918561
 GameObject:
   m_ObjectHideFlags: 0
@@ -3043,8 +3075,8 @@ MonoBehaviour:
   tampilkan: {fileID: 140344456}
   ball: {fileID: 654100007}
   ItemUltimate: {fileID: 1248346235}
-  player1Paddle: {fileID: 892768511}
-  player2Paddle: {fileID: 478517106}
+  player1Paddle: {fileID: 892768513}
+  player2Paddle: {fileID: 478517108}
   player1Score: {fileID: 1498563577}
   player2Score: {fileID: 221105008}
   tampilScore: {fileID: 71483448}
@@ -3594,6 +3626,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 848512032966238240, guid: 2abac77fbb94226488606c30325c3593, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 848512032966238243, guid: 2abac77fbb94226488606c30325c3593, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 848512032966238252, guid: 2abac77fbb94226488606c30325c3593, type: 3}

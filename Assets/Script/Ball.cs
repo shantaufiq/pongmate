@@ -17,19 +17,19 @@ public class Ball : MonoBehaviour
         _rigidbody.velocity = Vector2.zero;
     }
 
-    public void AddStartingForce(){
-        float x = Random.value < 0.5f ? -1f : 1f;
-        float y = Random.value < 0.5f ? Random.Range(-1f, -0.5f):
+    public void AddStartingForce(){ //! fungsi untuk mengatur posisi awal bola
+        float x = Random.value < 0.5f ? -1f : 1f; // membuat bola bergerak secara horizontal
+        float y = Random.value < 0.5f ? Random.Range(-1f, -0.5f): // membuat bola bergerak secara vertikal
                                         Random.Range(0.5f, 1f);
         Vector2 direction = new Vector2(x, y);
-        _rigidbody.AddForce(direction * this.speed);
+        _rigidbody.AddForce(direction * this.speed); // mengatur kecepatan bola
     }
     
     public void AddForce(Vector2 force){
         _rigidbody.AddForce(force);
     }
 
-    public void PergerakanBola(bool iyaTidak){
+    public void PergerakanBola(bool iyaTidak){ //! fungsi untuk mematikan bola, dieksekusi dalam GameManager
         bola.SetActive(iyaTidak);
     }
 

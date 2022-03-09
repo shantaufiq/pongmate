@@ -1,11 +1,18 @@
 using UnityEngine;
 
-public class PlayerPaddle : Paddle
+public class PlayerPaddle : Paddle //! fungsi untuk mengatur kontrol dari paddle
 {
+    // public static PlayerPaddle instance;
+    private Vector2 _direction;
+
+
     public bool WS_Control;
     public bool UpDown_Control;
-    private Vector2 _direction;
-    private void Update() {
+    private void Update() { 
+        ControlerPaddle();
+    }
+
+    public void ControlerPaddle(){ //! fungsi kontroler Paddle player
         if(this.WS_Control == true && this.UpDown_Control == true){
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
                 _direction = Vector2.up;
@@ -34,12 +41,14 @@ public class PlayerPaddle : Paddle
                 _direction = Vector2.zero;
         }
     }
-
-    private void FixedUpdate() {
+    private void FixedUpdate() { //! mengatur kecepatan paddle 
         if(_direction.sqrMagnitude != 0){
             rigidbody.AddForce(_direction * this.speed);
         }
     }
-
-
+    
+    public void MenambahKecepatan(){
+        speed = 100;
+        Debug.Log("masuk ke fungsi");
+    }
 }

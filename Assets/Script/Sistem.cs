@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sistem : MonoBehaviour
+public class Sistem : MonoBehaviour //! fungsi untuk megatur sistem pada main-menu
 {
-    public GameObject motherPopUp;
     public static Sistem instance;
+    public GameObject motherPopUp; //! mengambil mother element untuk ditampilkan
     public int ID;
     public GameObject contentPop;
     public GameObject[] PopUpManager;
@@ -21,7 +21,17 @@ public class Sistem : MonoBehaviour
         tampilContent();
     }
 
-    public void tampilContent(){
+    private void Update() {
+        // kondisi untuk kontrol keyboard
+        if(Input.GetKeyDown(KeyCode.RightArrow)){ // ketika menekan RightArrow maka akan next ke selanjutnya
+            GantiPopUp(true);
+        } 
+        if(Input.GetKeyDown(KeyCode.LeftArrow)){ // ketika menekan LeftArrow maka akan next ke sebelumnya
+            GantiPopUp(false);
+        } 
+    }
+
+public void tampilContent(){ //! fungsi menampilkan pop-up
         GameObject popUpSebelumnya = GameObject.FindGameObjectWithTag("pop-up");
         if (popUpSebelumnya != null) Destroy(popUpSebelumnya); // menghapus pop-up sebelumnya
 
@@ -31,17 +41,7 @@ public class Sistem : MonoBehaviour
         contentPop.GetComponent<Animation>().Play("pop-up"); // memanggil animasi pop-up
     }
 
-    private void Update() {
-        // kondisi untuk kontrol keyboard
-        if(Input.GetKeyDown(KeyCode.RightArrow)){
-            GantiPopUp(true);
-        } 
-        if(Input.GetKeyDown(KeyCode.LeftArrow)){
-            GantiPopUp(false);
-        } 
-    }
-
-    public void GantiPopUp(bool kanan){ // sistem pindah pop-up
+    public void GantiPopUp(bool kanan){ //! sistem pindah pop-up
         if(kanan){
             if (ID >= PopUpManager.Length - 1){
                 ID = 0;
@@ -58,11 +58,10 @@ public class Sistem : MonoBehaviour
         tampilContent();
     }
 
-    // fungsi mematikan pop-up guidelines
-    public void MatikanPop(){
+    public void MatikanPop(){ //! fungsi mematikan pop-up guidelines dengan animasi
         motherPopUp.GetComponent<Animation>().Play("matiinPop");
     }
-    public void NyalakanPop(){
+    public void NyalakanPop(){ //! fungsi menyalakan pop-up guidelines dengan animasi
         motherPopUp.SetActive(true);
         motherPopUp.GetComponent<Animation>().Play("nyalainPop");
         SuaraManager.instance.PanggilSuara(0);
