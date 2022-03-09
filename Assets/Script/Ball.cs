@@ -9,13 +9,13 @@ public class Ball : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    public void StartStopBall(bool kondisi){
-        if (kondisi == true){
-            ResetPosition();
-            AddStartingForce();
-        }else{
-            bola.SetActive(false);
-        }
+    private void Start() {
+
+    }
+    
+    public void PlayBall(){
+        ResetPosition();
+        AddStartingForce();
     }
     public void ResetPosition(){ // mengembalikan bola ke tengah
         _rigidbody.position = Vector2.zero;
@@ -34,4 +34,7 @@ public class Ball : MonoBehaviour
         _rigidbody.AddForce(force);
     }
 
+    public void StopBall(bool status){
+        bola.SetActive(status);
+    }
 }
