@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class Ultimate : MonoBehaviour
 {
-    // public static Ultimate instance;
+    public static Ultimate instance;
     public float kecepatanTurun;
     public GameObject MotherUltimate;
     public int IDUltimate;
@@ -23,7 +23,7 @@ public class Ultimate : MonoBehaviour
 
     private void Awake() {
         _rigidbody = GetComponent<Rigidbody2D>();
-        // instance = this;
+        instance = this;
     }
 
     private void Update() {
@@ -71,7 +71,7 @@ public class Ultimate : MonoBehaviour
         MotherUltimate.SetActive(kondisi);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) { //! check apabila bola mengenai item
+    private void OnTriggerEnter2D(Collider2D other) { //! trigger apabila bola mengenai item
         if (other.gameObject.tag == "Ball") {
             // Debug.Log("Ultimate Item ke: " + IDUltimate);
             GameManager.instance.KeluarinUltimate();
@@ -79,7 +79,7 @@ public class Ultimate : MonoBehaviour
         }
     }
 
-    public void CheckUltimatePlayer(bool Pberapa, int ItemBerapa){
+    public void CheckUltimatePlayer(bool Pberapa, int ItemBerapa){ //! check player mana yang mukul eksekusi di GameManager.cs
         PlayerGetUlti = Pberapa;
         ItemIndex = ItemBerapa;
         // Debug.Log("PlayerGetUlti: "+ PlayerGetUlti + " Item ulti ke: "+ ItemIndex);
@@ -121,12 +121,12 @@ public class Ultimate : MonoBehaviour
         PlayerGetUlti = resetGetUlti;
     }
     IEnumerator ResetBounce1(){
-        yield return new WaitForSecondsRealtime(6f); 
+        yield return new WaitForSecondsRealtime(8f); 
         player1.ResetBounceP1();
         PlayerGetUlti = resetGetUlti;
     }
     IEnumerator ResetBounce2(){
-        yield return new WaitForSecondsRealtime(6f);
+        yield return new WaitForSecondsRealtime(8f);
         player2.ResetBounceP2();
         PlayerGetUlti = resetGetUlti;
     }

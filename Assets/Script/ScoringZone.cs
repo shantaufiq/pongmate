@@ -10,6 +10,7 @@ public class ScoringZone : MonoBehaviour //! jika mengenai tembok maka player me
         if (ball != null){ //? check apabila bola menyentuh tembok  
             BaseEventData eventData = new BaseEventData(EventSystem.current);
             this.scoreTrigger.Invoke(eventData); // memanggil function
+            SuaraManager.instance.PanggilSuara(3);
         }
     }
 }

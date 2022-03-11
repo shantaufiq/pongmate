@@ -6,20 +6,24 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     //! input data
+    public GameObject GetUltiP1; // animasi ulti
+    public GameObject GetUltiP2; // animasi ulti
     public GameObject popUpStart;
     public GameObject tampilkan; // pop-up kemenangnan
     public Ball ball;
     public Ultimate ItemUltimate;
-    public Paddle player1Paddle;
-    public Paddle player2Paddle;
+    public Paddle player1Paddle; // pengaturan poin
+    public Paddle player2Paddle; // pengaturan poin
     public Text player1Score;
     public Text player2Score;
-    public Text tampilScore;
+    public Text tampilScore; // pop-up end game
     private int _player1Score;
     private int _player2Score;
-    private bool? BallStatus = new bool?();
-    protected int IDUltimate; 
+    private bool? BallStatus = new bool?(); // mengecek status bola, bagian siapa yang mukul
+    private bool? ResetBallStatus = new bool?(); // reset status
 
+    protected int IDUltimate; 
+    private bool checkPop = true;
     private void Awake() {
         instance = this;
     }
@@ -29,8 +33,12 @@ public class GameManager : MonoBehaviour
     void Update(){ 
         CheckKemenangan();
 
-        if(Input.GetKey(KeyCode.Space)){
-            StartGame();
+        if(Input.GetKey(KeyCode.Space)){ // menampilkan pop-up pause
+            if(checkPop == false){  
+                checkPop = !checkPop;
+                StartGame();
+                SuaraManager.instance.PanggilSuara(2);
+            }
         }
     }
     public void Player1Scores(){ //! menangkap parameter dari scoring zone
@@ -48,15 +56,16 @@ public class GameManager : MonoBehaviour
         this.player1Paddle.ResetPosition();
         this.player2Paddle.ResetPosition();
         this.ball.ResetPosition();
+        BallStatus = ResetBallStatus;
         StartCoroutine(ReturnBall());
     }
 
     IEnumerator ReturnBall(){ //! corountine untuk ngehold bola ketika habis poin
-        yield return new WaitForSecondsRealtime(1.2f);
-        this.ball.AddStartingForce();
+        yield return new WaitForSecondsRealtime(3f);
+        this.ball.AddStartingForce(); //? menggerakan bola
     }
     private void CheckKemenangan(){ //! check siapa pemenang dan menampilkan pop-up informasi
-        if (_player1Score == 2 || _player2Score == 2)
+        if (_player1Score == 10 || _player2Score == 10)
         {
             tampilkan.SetActive(true);
             this.ball.StopBall(false);
@@ -66,21 +75,27 @@ public class GameManager : MonoBehaviour
             this.ItemUltimate.StopUltimate(false);
             PlayerPrefs.SetInt("scorePlayer1", _player1Score);
             PlayerPrefs.SetInt("scorePlayer2", _player2Score);
+            SuaraManager.instance.BacksoundOff();
         }
     }
     private void StartGame(){
+        if(checkPop == true){
         popUpStart.SetActive(true); 
         this.player1Paddle.PergerakanPlayer(false);
         this.player2Paddle.PergerakanPlayer(false);
         this.ItemUltimate.StopUltimate(false);
         this.ball.StopBall(false);
+        SuaraManager.instance.BacksoundOff();
+        }
     }
-    public void ReturnGame(){
+    public void ReturnGame(){ //! fungsi button di pop-up startgame 
         popUpStart.SetActive(false); 
         this.player1Paddle.PergerakanPlayer(true);
         this.player2Paddle.PergerakanPlayer(true);
         this.ItemUltimate.StopUltimate(true);
         this.ball.StopBall(true);
+        checkPop = false; //? check status pop-up
+        SuaraManager.instance.BacksoundPlay();
     }
     public void CheckStatusBola(bool isi){ //! checker ketika bola nyentuh paddle - menangkap parameter boolean dari paddle
         BallStatus = isi;
@@ -91,37 +106,45 @@ public class GameManager : MonoBehaviour
     }
     public void KeluarinUltimate(){ //! Function Keluarin Ultimate Sesuai Index
 
-        if (BallStatus == true){
+        if (BallStatus == true){ //? kondisi ketika status bola true
             if (IDUltimate == 0){
-                ItemUltimate.CheckUltimatePlayer(true, 1);
-                SuaraManager.instance.PanggilSuara(0);
+                ItemUltimate.CheckUltimatePlayer(true, 1); //? mengirim informasi ultimate ke Ultimate.cs 
+                SuaraManager.instance.PanggilSuara(4); //? play sound fx get ultimate
+                GetUltiP1.GetComponent<Animation>().Play("UltiSpeed"); //? panggil animasi get ultimate
             } else if (IDUltimate == 1){
-                ItemUltimate.CheckUltimatePlayer(true, 2);
-                SuaraManager.instance.PanggilSuara(0);
+                ItemUltimate.CheckUltimatePlayer(true, 2); //? mengirim informasi ultimate ke Ultimate.cs
+                SuaraManager.instance.PanggilSuara(4); //? play sound fx get ultimate
+                GetUltiP1.GetComponent<Animation>().Play("UltiSpeed"); //? panggil animasi get ultimate
             } else if (IDUltimate == 2){
-                ItemUltimate.CheckUltimatePlayer(true, 3);
-                SuaraManager.instance.PanggilSuara(0);
+                ItemUltimate.CheckUltimatePlayer(true, 3); //? mengirim informasi ultimate ke Ultimate.cs
+                SuaraManager.instance.PanggilSuara(5); //? play sound fx get ultimate
+                GetUltiP1.GetComponent<Animation>().Play("UltiSpeed"); //? panggil animasi get ultimate
             }else if (IDUltimate == 3){
-                ItemUltimate.CheckUltimatePlayer(true, 4);
-                SuaraManager.instance.PanggilSuara(0);
+                ItemUltimate.CheckUltimatePlayer(true, 4); //? mengirim informasi ultimate ke Ultimate.cs
+                SuaraManager.instance.PanggilSuara(5); //? play sound fx get ultimate
+                GetUltiP1.GetComponent<Animation>().Play("UltiSpeed"); //? panggil animasi get ultimate
             }else{
-                ItemUltimate.CheckUltimatePlayer(true, 10); 
+                ItemUltimate.CheckUltimatePlayer(true, 10); //? mengirim informasi ultimate ke Ultimate.cs; 
             }
-        } else if (BallStatus == false){
+        } else if (BallStatus == false){ //? kondisi ketika status bola false
             if (IDUltimate == 0){
-                ItemUltimate.CheckUltimatePlayer(false, 1);
-                SuaraManager.instance.PanggilSuara(0);
+                ItemUltimate.CheckUltimatePlayer(false, 1); //? mengirim informasi ultimate ke Ultimate.cs
+                SuaraManager.instance.PanggilSuara(4); //? play sound fx get ultimate
+                GetUltiP2.GetComponent<Animation>().Play("UltiSpeed"); //? panggil animasi get ultimate
             } else if (IDUltimate == 1){
-                ItemUltimate.CheckUltimatePlayer(false, 2);
-                SuaraManager.instance.PanggilSuara(0);
+                ItemUltimate.CheckUltimatePlayer(false, 2); //? mengirim informasi ultimate ke Ultimate.cs
+                SuaraManager.instance.PanggilSuara(4); //? play sound fx get ultimate
+                GetUltiP2.GetComponent<Animation>().Play("UltiSpeed"); //? panggil animasi get ultimate
             } else if (IDUltimate == 2){
-                ItemUltimate.CheckUltimatePlayer(false, 3);
-                SuaraManager.instance.PanggilSuara(0);
+                ItemUltimate.CheckUltimatePlayer(false, 3); //? mengirim informasi ultimate ke Ultimate.cs
+                SuaraManager.instance.PanggilSuara(5); //? play sound fx get ultimate
+                GetUltiP2.GetComponent<Animation>().Play("UltiSpeed"); //? panggil animasi get ultimate
             }else if (IDUltimate == 3){
-                ItemUltimate.CheckUltimatePlayer(false, 4);
-                SuaraManager.instance.PanggilSuara(0);
+                ItemUltimate.CheckUltimatePlayer(false, 4); //? mengirim informasi ultimate ke Ultimate.cs
+                SuaraManager.instance.PanggilSuara(5); //? play sound fx get ultimate
+                GetUltiP2.GetComponent<Animation>().Play("UltiSpeed"); //? panggil animasi get ultimate
             }else{
-                ItemUltimate.CheckUltimatePlayer(false, 10); 
+                ItemUltimate.CheckUltimatePlayer(false, 10); //? mengirim informasi ultimate ke Ultimate.cs 
             }
         }
     }

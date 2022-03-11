@@ -3,27 +3,38 @@ using UnityEngine;
 public class Player2Paddle : Paddle
 {
     // public static PlayerPaddle instance;
+    public Rigidbody2D ball;
+    public bool ComputerPaddle;
     private Vector2 _direction;
-
-     public float SpeedUp;
-     public float kekuatanPukulan;
+    public float SpeedUp;
+    public float kekuatanPukulan;
     private void Update() { 
-        if(Input.GetKey(KeyCode.UpArrow)){
-                _direction = Vector2.up;
-            }else if(Input.GetKey(KeyCode.DownArrow)){
-                _direction = Vector2.down;
-            }else{
-                _direction = Vector2.zero;
-            }
+        ControlerPaddle();
     }
 
     private void ControlerPaddle(){ //! fungsi kontroler Paddle player
-        if(Input.GetKey(KeyCode.UpArrow)){
-                _direction = Vector2.up;
-            }else if(Input.GetKey(KeyCode.DownArrow)){
-                _direction = Vector2.down;
-            }else{
-                _direction = Vector2.zero;
+        if(ComputerPaddle == true){
+             if (this.ball.velocity.x > 0.0f){ //! check apakah bola udah ada dikanan net
+            if (this.ball.position.y > this.transform.position.y){ //? posisi bola lebih besar dari paddle
+                rigidbody.AddForce(Vector2.up * this.speed);
+            }else if(this.ball.position.y < this.transform.position.y){ //? posisi bola lebih besar dari paddle
+                rigidbody.AddForce(Vector2.down * this.speed);
+            }
+        }else{  //! check apakah bola udah ada dikiri net
+            if (this.transform.position.y > 0.0f){ //? apabila ada diatas maka akan kembali ketengah
+                rigidbody.AddForce(Vector2.down * this.speed);
+            }else if (this.transform.position.y > 0.0f){ //? apabila ada dibawah maka akan kembali ketengah
+                rigidbody.AddForce(Vector2.up * this.speed);
+            }
+        }
+        }else{
+            if(Input.GetKey(KeyCode.UpArrow)){
+                    _direction = Vector2.up;
+                }else if(Input.GetKey(KeyCode.DownArrow)){
+                    _direction = Vector2.down;
+                }else{
+                    _direction = Vector2.zero;
+                }
             }
     }
     private void FixedUpdate() { //! mengatur kecepatan paddle 

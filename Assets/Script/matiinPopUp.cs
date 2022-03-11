@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class matiinPopUp : MonoBehaviour // Animasi Pop-up di main menu
+public class matiinPopUp : MonoBehaviour //! fungsi untuk Animasi Pop-up di main menu
 {
     // Update is called once per frame
     public void setOff()
